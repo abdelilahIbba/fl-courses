@@ -1,0 +1,50 @@
+-- إنشاء جدول المستخدمين (Users)
+CREATE TABLE Users (
+    User_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL
+);
+
+-- إنشاء جدول المشتريات (Purchases)
+CREATE TABLE Purchases (
+    Purchase_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Product_ID INT,
+    User_ID INT,
+    Quantity INT,
+    Purchase_Price DECIMAL(10, 2),
+    FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+);
+
+-- إنشاء جدول الطلبات (Orders)
+CREATE TABLE Orders (
+    Order_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Order_Date DATE NOT NULL,
+    Product_ID INT,
+    User_ID INT,
+    Quantity INT,
+    Order_Price DECIMAL(10, 2),
+    FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID),
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+);
+
+إنشاء جدول المنتجات (Products):
+sql
+Copy code
+CREATE TABLE Products (
+    Product_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Product_Name VARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Description TEXT,
+    Category_ID INT,
+    FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID)
+);
+
+إنشاء جدول الأقسام (Categories):
+sql
+Copy code
+CREATE TABLE Categories (
+    Category_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Category_Name VARCHAR(255) NOT NULL
+);
