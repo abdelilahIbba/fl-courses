@@ -1,7 +1,7 @@
 <header class="header" data-header>
     <div class="container">
 
-        <a href="#" class="logo">
+        <a href="index.php" class="logo">
             <img src="./assets/images/logoo.svg" width="162" height="50" alt="KuRoko logo">
         </a>
 
