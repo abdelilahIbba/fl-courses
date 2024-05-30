@@ -22,7 +22,7 @@
                 <div class="wrapper">
                     <span class="span">Call:</span>
 
-                    <a href="tel:+011234567890" class="footer-link">+01 123 4567 890</a>
+                    <a href="tel:+011234567890" class="footer-link">+212 66 666 66</a>
                 </div>
 
                 <div class="wrapper">
@@ -158,7 +158,7 @@
         <div class="container">
 
             <p class="copyright">
-                Copyright 2022 All Rights Reserved by <a href="#" class="copyright-link">KuRoko</a>
+                Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">KuRoko</a>
             </p>
 
         </div>
