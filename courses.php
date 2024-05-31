@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <title>KuRoko - The Best Program to Enroll for Exchange</title>
+    <title>KuRoko - Courses</title>
     <meta name="title" content="KuRoko - The Best Program to Enroll for Exchange">
     <meta name="description" content="This is an education html template made by codewithsadee">
 

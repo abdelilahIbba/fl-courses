@@ -9,7 +9,7 @@
 
             <div class="wrapper">
                 <a href="#" class="logo">
-                    <img src="./assets/images/logo.svg" width="162" height="50" alt="KuRoko logo">
+                    <img src="./assets/images/logoo.svg" width="162" height="50" alt="KuRoko logo">
                 </a>
 
                 <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
