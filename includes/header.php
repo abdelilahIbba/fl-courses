@@ -55,8 +55,8 @@
                 <span class="btn-badge">0</span>
             </button>
 
-            <a href="#" class="btn has-before">
-                <span class="span">Try for free</span>
+            <a href="login.php" class="btn has-before">
+                <span class="span">Login</span>
 
                 <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
             </a>
