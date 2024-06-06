@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $role = ($_POST['role'] === 'admin') ? 'admin' : 'student';
+    $role = ($_POST['role'] === 'admin') ? 'admin' : ($_POST['role'] === 'instructor' ? 'instructor' : 'student');
 
     // Check if email is valid
     if (!$email) {
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Form</title>
-    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
 <div class="form-container">
@@ -68,13 +68,13 @@ if(isset($_POST['submit'])){
         <input type="password" name="password" required placeholder="Enter your password">
         <input type="password" name="cpassword" required placeholder="Confirm your password">
         <select name="role">
-            <option value="user">student</option>
-            <option value="user">instructor</option>
+            <option value="student">Student</option>
+            <option value="instructor">Instructor</option>
             <option value="admin">Admin</option>
         </select>
         <input type="submit" name="submit" value="Register Now" class="form-btn">
 
-        <p>Already have an account? <a href="login_form.php">Login Now</a></p>
+        <p>Already have an account? <a href="login.php">Login Now</a></p>
     </form>
 </div>
 </body>

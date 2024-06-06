@@ -5,44 +5,48 @@ session_start();
 
 $error = [];
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     // Check if email is provided
-    if(empty($email)){
+    if (empty($email)) {
         $error[] = 'Please enter your email.';
     }
 
     // Check if password is provided
-    if(empty($password)){
+    if (empty($password)) {
         $error[] = 'Please enter your password.';
     }
 
-    if(empty($error)){
+    if (empty($error)) {
         // Prepare and execute the query
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $row = $stmt->fetch();
 
-        if($row){
+        if ($row) {
             // Verify password
-            if(password_verify($password, $row['password'])){
+            if (password_verify($password, $row['password'])) {
                 // Set session variables based on user type
-                if($row['role'] == 'instructor'){
+                if ($row['role'] == 'instructor') {
                     $_SESSION['instructor_name'] = $row['name'];
                     header('location: instructor_page.php');
                     exit();
-                } elseif($row['role'] == 'student'){
+                } elseif ($row['role'] == 'student') {
                     $_SESSION['student_name'] = $row['name'];
                     header('location: courses.php');
                     exit();
+                } elseif ($row['role'] == 'admin') {
+                    $_SESSION['admin_name'] = $row['name'];
+                    header('location: admin_page.php');
+                    exit();
+                } else {
+                    $error[] = 'Incorrect email or password.';
                 }
             } else {
-                $error[] = 'Incorrect email or password.';
+                $error[] = 'User not found.';
             }
-        } else {
-            $error[] = 'User not found.';
         }
     }
 }
@@ -56,7 +60,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <!-- Custom CSS file link -->
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
 </head>
 <body>
 <div class="form-container">
