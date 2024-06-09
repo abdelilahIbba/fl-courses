@@ -1,3 +1,15 @@
+<?php
+// Include the database connection file
+include_once "./config.php";
+
+// Fetch courses from the database
+$coursesStmt = $pdo->query("SELECT c.course_id, c.course_image, c.title, c.description, c.price, u.username as instructor_name, cat.name as category_name 
+                            FROM courses c 
+                            JOIN users u ON c.instructor_id = u.user_id 
+                            JOIN categories cat ON c.category_id = cat.category_id");
+$courses = $coursesStmt->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,65 +52,37 @@
         <p class="section-subtitle">Popular Courses</p>
         <h2 class="h2 section-title">Pick A Course To Get Started</h2>
 
+
+
+        <!-- Rest of your HTML code -->
+
         <ul class="grid-list">
+            <?php foreach ($courses as $course): ?>
+                <li>
+                    <div class="course-card">
+                        <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                            <img src="path_to_your_image_directory/<?php echo htmlspecialchars($course['course_image']); ?>
+" width="370" height="220" loading="lazy" alt="Course Image" class="img-cover">
+                        </figure>
 
-            <li>
-                <div class="course-card">
-                    <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                        <img src="./assets/images/course-1.jpg.png" width="370" height="220" loading="lazy"
-                             alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
-                    </figure>
-
-                    <div class="abs-badge">
-                        <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                        <span class="span">3 Weeks</span>
-                    </div>
-
-                    <div class="card-content">
-
-                        <span class="badge">Beginner</span>
+                        <!-- Rest of the course card content -->
 
                         <h3 type="button" class="h3" data-bs-toggle="modal" data-bs-target="#courseModal"
-                            data-title="The Complete Piano & Music Theory Beginners Course"
-                            data-description="Learn the basics of piano and music theory."
-                            data-instructor="John Doe"
-                            data-category="Music Theory"
-                            data-price="29"
-                            data-video-url="https://example.com/videos/music_theory_intro.mp4">
-                            <a href="#" class="card-title">The Complete Piano & Music Theory Beginners Course</a>
+                            data-title="<?php echo htmlspecialchars($course['title']); ?>"
+                            data-description="<?php echo htmlspecialchars($course['description']); ?>"
+                            data-instructor="<?php echo htmlspecialchars($course['instructor_name']); ?>"
+                            data-category="<?php echo htmlspecialchars($course['category_name']); ?>"
+                            data-price="<?php echo htmlspecialchars($course['price']); ?>"
+                            data-video-url="https://example.com/videos/<?php echo htmlspecialchars($course['video_url']); ?>">
+                            <a href="#" class="card-title"><?php echo htmlspecialchars($course['title']); ?></a>
                         </h3>
 
-                        <div class="wrapper">
-                            <div class="rating-wrapper">
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                                <ion-icon name="star"></ion-icon>
-                            </div>
-                            <p class="rating-text">(5/5 Rating)</p>
-                        </div>
-
-                        <data class="price" value="29">$29.00</data>
-
-                        <ul class="card-meta-list">
-                            <li class="card-meta-item">
-                                <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-                                <span class="span">8 Lessons</span>
-                            </li>
-                            <li class="card-meta-item">
-                                <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-                                <span class="span">20 Students</span>
-                            </li>
-                        </ul>
-
+                        <!-- Rest of the course card content -->
                     </div>
-                </div>
-            </li>
-
-            <!-- Repeat similar blocks for other courses -->
-
+                </li>
+            <?php endforeach; ?>
         </ul>
+
 
     </div>
 </section>

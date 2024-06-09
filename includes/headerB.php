@@ -260,9 +260,8 @@
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                <i class=" ri-book-open-line
-"></i>
+            <a class="nav-link collapsed" href="./panel/addCourses.php">
+                <i class="ri-book-open-line"></i>
                 <span>courses</span>
             </a>
         </li><!-- End Contact Page Nav -->
